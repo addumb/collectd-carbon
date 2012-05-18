@@ -134,6 +134,14 @@ The *data_source* values for this type would be *used* and *free*
 yielding the metrics (along the lines of)
 *hostname_domain.plugin.df.used* and *hostname_domain.plugin.df.free*.
 
+If we include the configuration options that can further mangle the input,
+we can end up with mangling like this:
+
+    [prefix.]host[host_separator=.]domain[host_separator=.]com[.postfix].plugin[.plugin_instance].type[metric_separator=.]type_instance.data_source
+
+Note: host_separator and metric_separator default to . which can create
+very deep trees in carbon.
+
 ## COUNTER and DERIVE Types
 
 Collectd data types, like RRDTool, differentiate between ABSOLUTE,
